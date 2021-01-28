@@ -1,0 +1,1 @@
+URL_USER = "/api/v1/services/users/"
