@@ -1,10 +1,8 @@
-import json
-
 class User:
-    def __init__(self, id=0, firstName="", lastName="", email="", password="", address="", tel="", admin=False) -> None:
+    def __init__(self, id=0, first_name="", last_name="", email="", password="", address="", tel="", admin=False) -> None:
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.password = password
         self.address = address

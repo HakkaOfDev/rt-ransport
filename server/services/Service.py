@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from database.SQLService import SQLService
+from services.database.SQLService import SQLService
 
 
 class Service:
