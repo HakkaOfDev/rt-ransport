@@ -11,7 +11,7 @@
 
 <script>
 import LangSwitcher from '~/components/LangSwitcher'
-import Navbar from '~/components/navbar/navbar';
+import Navbar from '~/components/navbar/Navbar';
 import NavResponsive from "~/components/responsivenav/NavResponsive";
 
 export default {

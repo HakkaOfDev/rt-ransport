@@ -14,9 +14,12 @@ users_bp = Blueprint('users_bp', __name__)
 def getAllUsers():
     users = userService.findAll()
     response = []
-    for user in users:
-        response.append(json.loads(json.dumps(user, indent=4, cls=UserEncoder)))
-    return jsonify(response)
+    if users != None:
+        for user in users:
+            response.append(json.loads(json.dumps(user, indent=4, cls=UserEncoder)))
+        return jsonify(response)
+    else:
+        return "Users not found"
 
 
 @users_bp.route(URL_USER + 'register', methods=['POST'])
@@ -38,7 +41,7 @@ def loginUser():
     password = data['password']
     if userService.ifUserExistsWithEmail(email):
         if userService.loginUser(email, password):
-            abort(Response('Login successful', status=200, mimetype='application/json'))
+            abort(Response('success login', status=200, mimetype='application/json'))
         else:
             abort(Response('Invalid credentials', status=400, mimetype='application/json'))
     else:

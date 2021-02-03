@@ -76,7 +76,12 @@ export default {
 		// Doc : https://github.com/nuxt-community/robots-module
 		['@nuxtjs/robots', Robots],
 	],
-
+	/**
+	 * Proxy
+	 */
+	proxy: {
+		'/api/v1/services': { target: 'http://localhost:8887/api/v1/services', changeOrigin: true }
+	},
 	/**
 	 ** Environnements variables settings
 	 ** Don't forget to specifie 'process.client'

@@ -10,9 +10,10 @@ class UserService(Service):
     def findAll(self):
         users = []
         rows = self.sql.getRows('SELECT * FROM users')
-        for user in rows:
-            users.append(User(user[0], user[1], user[2], user[3], user[4], user[5], user[6], user[7]))
-        return users
+        if rows != None:
+            for user in rows:
+                users.append(User(user[0], user[1], user[2], user[3], user[4], user[5], user[6], user[7]))
+            return users
 
     def getUserByEmail(self, email):
         print(email)

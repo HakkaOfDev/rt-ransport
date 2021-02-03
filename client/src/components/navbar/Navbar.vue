@@ -29,7 +29,7 @@
 							<fa :icon="['fas', 'search']"/>
 						</a>
 					</form>
-					<a href="/about-me"
+					<a href="/authentication"
 					   class="text-base leading-6 font-medium text-2xl text-gray-800 hover:text-red-500 focus:outline-none focus:text-red-500 transition ease-in-out duration-150">
 						<fa :icon="['fas', 'user']"/>
 					</a>
