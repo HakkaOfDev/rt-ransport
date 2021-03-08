@@ -1,4 +1,4 @@
-# frontend
+# nuxt-ts-app
 
 ## Build Setup
 

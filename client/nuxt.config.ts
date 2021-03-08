@@ -1,134 +1,30 @@
-import { Auth, Axios, Meta, Robots, Sitemap, Toasts, Translations, GoogleAnalytics } from './config'
+import head from './settings/Head'
+import buildModules from './settings/BuildModules'
+import modules from './settings/Modules'
+import build from './settings/Build'
+import arch from './settings/Arch'
+import plugins from './settings/Plugins'
+import env from './settings/Env'
+import css from './settings/Styles'
 
 export default {
-	/*
-	 ** Nuxt rendering mode
-	 ** See https://nuxtjs.org/api/configuration-mode
-	 */
-	mode: 'universal',
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
 
-	/*
-	 ** Nuxt target
-	 ** See https://nuxtjs.org/api/configuration-target
-	 */
-	target: 'server',
+  head,
+  modules,
+  ...arch,
+  build,
+  plugins,
+  env,
+  css,
 
-	debug: true,
+  buildModules,
 
-	/*
-	 ** Auto import components
-	 ** See https://nuxtjs.org/api/configuration-components
-	 */
-	components: true,
-
-	/*
-	 ** Nuxt.js dev-modules
-	 */
-	buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api', ['@nuxtjs/google-analytics', GoogleAnalytics], '@nuxtjs/tailwindcss', '@nuxtjs/fontawesome'],
-
-	fontawesome: {
-		component: 'fa',
-		icons: {
-			solid: true,
-			brands: true
-		}
-	},
-
-	/**
-	 ** Nuxt build folder
-	 */
-	buildDir: 'build',
-
-	/**
-	 ** Nuxt src folder
-	 */
-	srcDir: 'src',
-
-	dir: {
-		assets: 'assets',
-		layouts: 'template/layouts',
-		middleware: 'middleware',
-		pages: 'template/pages',
-		static: 'public',
-		store: 'store',
-	},
-
-	/*
-	 ** Nuxt.js modules
-	 ** See ~/configurations/*
-	 */
-	modules: [
-		// Doc: https://axios.nuxtjs.org/usage
-		['@nuxtjs/axios', Axios],
-
-		// Doc: https://auth.nuxtjs.org/
-		['@nuxtjs/auth', Auth],
-
-		// Doc : https://github.com/nuxt-community/modules/tree/master/packages/toast
-		['@nuxtjs/toast', Toasts],
-
-		// Doc : https://github.com/nuxt-community/sitemap-module
-		['@nuxtjs/sitemap', Sitemap],
-
-		// Doc : https://i18n.nuxtjs.org/
-		['nuxt-i18n', Translations],
-
-		// Doc : https://github.com/nuxt-community/robots-module
-		['@nuxtjs/robots', Robots],
-	],
-	/**
-	 * Proxy
-	 */
-	proxy: {
-		'/api/v1/services': { target: 'http://localhost:8887/api/v1/services', changeOrigin: true }
-	},
-	/**
-	 ** Environnements variables settings
-	 ** Don't forget to specifie 'process.client'
-	 ** if you want to use 'window' or 'document'
-	 */
-	env: {},
-
-	/**
-	 ** Headers module settings
-	 ** See https://fr.nuxtjs.org/guides/configuration-glossary/configuration-head/
-	 */
-	head: Meta,
-
-	/**
-	 ** Global style module settings
-	 ** See https://fr.nuxtjs.org/guides/configuration-glossary/configuration-css
-	 */
-	css: ['material-icons/iconfont/material-icons.scss'],
-
-	/*
-	 ** Plugins to load before mounting the App
-	 ** https://nuxtjs.org/guide/plugins
-	 */
-	plugins: [],
-
-	/**
-	 ** Build settings
-	 ** See https://fr.nuxtjs.org/guides/configuration-glossary/configuration-build/
-	 */
-	build: {},
-
-	/**
-	 ** Nuxt generation settings
-	 ** See https://fr.nuxtjs.org/api/configuration-generate/
-	 */
-	generate: {
-		minify: {
-			collapseWhitespace: false,
-		},
-	},
-
-	/**
-	 ** Nuxt transition settings
-	 ** See https://fr.nuxtjs.org/api/configuration-transition
-	 */
-	pageTransition: {
-		name: 'page',
-		mode: 'out-in',
-	},
+  /**
+   * Proxy
+   */
+  proxy: {
+    '/api/v1/services': { target: 'http://localhost:8887/api/v1/services', changeOrigin: true }
+  },
 }

@@ -1,12 +1,13 @@
 .header-container {
-	height: 70vh;
-	background: url('../../public/images/header.jpg') no-repeat center;
-	background-size: cover;
+  height: 70vh;
+  background: url('../../public/images/header.jpg') no-repeat center;
+  background-size: cover;
 
-	@media screen and (min-width: 1024px) {
-		height: 85vh;
-	}
+  @media screen and (min-width: 1024px) {
+    height: 85vh;
+  }
 }
+
 .header-text {
-	font-family: Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }

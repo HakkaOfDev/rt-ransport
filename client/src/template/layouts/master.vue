@@ -1,28 +1,27 @@
 <template>
-	<div>
-		<Navbar/>
-		<NavResponsive/>
-		<client-only>
-			<LangSwitcher />
-		</client-only>
-		<Nuxt />
-	</div>
+  <div>
+    <Navbar />
+    <NavResponsive />
+    <Nuxt />
+    <ButtonLanguage />
+  </div>
 </template>
 
-<script>
-import LangSwitcher from '~/components/LangSwitcher'
-import Navbar from '~/components/navbar/Navbar';
-import NavResponsive from "~/components/responsivenav/NavResponsive";
+<script lang='ts'>
+import { defineComponent } from '@vue/composition-api'
+import ButtonLanguageVue from '@/components/ButtonLanguage.vue'
+import Navbar from '@/components/navbar/Navbar.vue'
+import NavResponsive from '@/components/responsivenav/NavResponsive.vue'
 
-export default {
-	name: 'master',
-	components: { NavResponsive, Navbar, LangSwitcher },
-}
+export default defineComponent({
+  name: 'master',
+  components: { ButtonLanguage: ButtonLanguageVue, Navbar, NavResponsive }
+})
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 body {
-	width: 100%;
-	min-height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 </style>
