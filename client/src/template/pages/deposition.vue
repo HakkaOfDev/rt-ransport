@@ -2,7 +2,7 @@
   <div class='main'>
     <div class='w-full h-screen flex flex-row justify-center items-start space-y-3 text-center'>
       <div class='text-center'>
-        <h1 class='text-3xl my-3'>Déposition</h1>
+        <h1 class='text-3xl my-3'>{{ $t('deposition') }}</h1>
         <form id='deposition' class='flex flex-col justify-center items-center space-y-3'>
           <div class='flex flex-row justify-between items-center space-x-2'>
             <span class='icon-crop'></span>
@@ -23,7 +23,7 @@
                      class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
                      type='text' />
             </label>
-            <p>en cm</p>
+            <p>{{  $t('in') }} cm</p>
           </div>
           <div class='flex flex-row justify-between items-center space-x-2'>
             <span class='icon-download3'></span>
@@ -32,28 +32,39 @@
                      class='w-20 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
                      type='text' />
             </label>
-            <p>en kg</p>
+            <p>{{  $t('in') }} kg</p>
           </div>
           <label class='flex flex-row justify-between items-center space-x-2'>
             <span class='icon-spinner4'></span>
-            <p>Emballage</p>
+            <p>{{ $t('packaging') }}</p>
             <select class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
-              <option class='py-1'>Carton</option>
-              <option class='py-1'>Polystyrène</option>
-              <option class='py-1'>Papier</option>
+              <option class='py-1'>{{  $t('carton') }}</option>
+              <option class='py-1'>{{  $t('styrofoam') }}</option>
+              <option class='py-1'>{{  $t('paper') }}</option>
+            </select>
+          </label>
+          <label class='flex flex-row justify-between items-center space-x-2'>
+            <span class='icon-info'></span>
+            <p>Type</p>
+            <select class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+              <option class='py-1'>Documents</option>
+              <option class='py-1'>{{  $t('goods') }}</option>
+              <option class='py-1'>{{  $t('others') }}</option>
             </select>
           </label>
           <div class='flex flex-row justify-between items-center space-x-2'>
             <label>
               <input type='checkbox' v-model='form.assured' />
-              Assuré
+              {{ $t('assured') }}
             </label>
             <div class='' v-if='form.assured'>
-              <select class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
-                <option class='py-1' disabled selected>Type d'assurance</option>
-                <option class='py-1'>15$ - Niveau 2</option>
-                <option class='py-1'>5$ - Niveau 1</option>
-              </select>
+              <label>
+                <select class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                  <option class='py-1' selected>{{ $t('level_insurance') }}</option>
+                  <option class='py-1'>$15 - {{ $t('insurance') }} 2</option>
+                  <option class='py-1'>$5 - {{ $t('insurance') }} 1</option>
+                </select>
+              </label>
             </div>
           </div>
           <label>
@@ -80,7 +91,7 @@ export default Vue.extend({
   data() {
     return {
       form: {
-        assured: false
+        type: false
       }
     }
 
@@ -88,4 +99,4 @@ export default Vue.extend({
 })
 </script>
 
-<style lang='scss' src='./index.scss'></style>
+<style lang='scss' scoped></style>

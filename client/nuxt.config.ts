@@ -21,10 +21,4 @@ export default {
 
   buildModules,
 
-  /**
-   * Proxy
-   */
-  proxy: {
-    '/api/v1/services': { target: 'http://localhost:8887/api/v1/services', changeOrigin: true }
-  },
 }

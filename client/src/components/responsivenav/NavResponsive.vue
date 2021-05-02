@@ -6,13 +6,13 @@
         <span class='text-gray-900 uppercase text-sm'>{{ $t('home_nav_title') }}</span>
       </div>
     </a>
-    <a class='relative w-full h-full ' href='/achievements'>
+    <a class='relative w-full h-full ' href='/prices'>
       <div class='item'>
         <span class="icon-coin-dollar text-gray-900 text-2xl"></span>
         <span class='text-gray-900 uppercase text-sm'>{{ $t('tariff_nav_title') }}</span>
       </div>
     </a>
-    <a class='relative w-full h-full' href='/about-me'>
+    <a class='relative w-full h-full' href='/my-parcels'>
       <div class='item'>
         <span class="icon-codepen text-gray-900 text-2xl"></span>
         <span class='text-gray-900 uppercase text-sm'>{{ $t('parcels_nav_title') }}</span>

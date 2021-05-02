@@ -1,20 +1,22 @@
 import { reactive, useContext } from '@nuxtjs/composition-api'
-import { success } from '@/services/useToast'
+import { success, error } from '@/services/useToast'
 
 export function useLogin() {
   const { $auth } = useContext()
+  const { $toast } = useContext()
   const state = reactive({
     email: '',
-    password: '',
-    remember_me: false
+    password: ''
   })
 
   async function handleSubmit() {
-    try {
-      const { data } = (await $auth.loginWith('local', { data: state })) as any
-      success(`Welcome ${data.username} ! 👋`)
-    } catch (error: any) {
-      error.response.data.errors.forEach((error: any) => error(error.message))
+    const { data } = (await $auth.loginWith('local', { data: state })) as any
+    if (data.code == 200) {
+      $toast.success(`Welcome 👋`)
+    } else if (data.code == 401) {
+      $toast.error(`Invalid credentials`)
+    } else if (data.code == 404) {
+      $toast.error(`User not found`)
     }
   }
 
@@ -24,12 +26,19 @@ export function useLogin() {
   }
 }
 
-export function logout() {
+export function useLogout() {
   const { $auth } = useContext()
-  try {
-    $auth.logout()
-    success('You are now logged out')
-  } catch (error: any) {
-    error.response.data.errors.forEach((error: any) => error(error.message))
+
+  async function handleLogout() {
+    try {
+      $auth.logout()
+      success('You are now logged out 👋')
+    } catch (error: any) {
+      console.log(error)
+    }
+  }
+
+  return {
+    handleLogout
   }
 }

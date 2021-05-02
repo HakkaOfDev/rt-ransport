@@ -1,15 +1,15 @@
 // Global page headers: https://go.nuxtjs.dev/config-head
 const params = {
-  title: 'nuxt-ts-app',
+  title: 'RT\'Ransport',
   color: '#0DA5FF',
   image: '/images/image.jpg',
-  url: 'https://my-domain.com',
+  url: 'https://rt-ransport.com',
   favicon: {
     type: 'image/jpg',
     href: '/favicon.jpg',
   },
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+    'Transporteur de colis !',
 }
 
 export default {

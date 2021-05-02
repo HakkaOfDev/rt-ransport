@@ -1,8 +1,8 @@
 // Axios module configuration: https://go.nuxtjs.dev/config-axios
 const axios = {
+  baseURL: 'http://localhost:8887/api/v1',
   credentials: true,
   progress: false,
-  proxy: true
 }
 
 const i18n = {
@@ -22,10 +22,10 @@ const auth = {
   strategies: {
     local: {
       endpoints: {
-        login: { url: '/authentication/web/login', method: 'post' },
-        logout: { url: '/authentication/web/logout', method: 'post' },
+        login: { url: '/authentication/login', method: 'post' },
+        logout: { url: '/authentication/logout', method: 'post' },
         user: {
-          url: '/authentication/user/me',
+          url: '/authentication/me',
           method: 'get',
           propertyName: 'user',
         },
@@ -35,7 +35,7 @@ const auth = {
     },
   },
   redirect: {
-    login: '/authentication/login',
+    login: '/authentication',
     logout: '/',
     callback: '/',
     home: '/',
@@ -44,7 +44,7 @@ const auth = {
 }
 
 const toast = {
-  position: 'bottom-center',
+  position: 'top-right',
   duration: 5000,
   keepOnHover: true,
 }
