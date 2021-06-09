@@ -46,9 +46,15 @@
             href='/authentication'>
             <span class='icon-user'></span>
           </a>
-          <a v-else @click.prevent='handleLogout' class='text-base leading-6 font-medium text-2xl text-gray-800 hover:text-red-500 focus:outline-none focus:text-red-500 transition ease-in-out duration-150' href='#'>
-            {{ this.$auth.user.lastname + " " + this.$auth.user.firstname }}
-          </a>
+          <div class='flex flex-row justify-between items-center space-x-2' v-else>
+            <p class='text-base leading-6 uppercase text-xl text-gray-800 hover:text-red-500 focus:outline-none focus:text-red-500 transition ease-in-out duration-150'>
+              {{ this.$auth.user.lastname + " " + this.$auth.user.firstname }}
+            </p>
+            <a class='text-base leading-6 font-medium text-xl text-gray-800 hover:text-red-500 focus:outline-none focus:text-red-500 transition ease-in-out duration-150' @click.prevent='handleLogout'
+               href='/logout'>
+              <span class='icon-switch'></span>
+            </a>
+          </div>
           <a
             class='whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-full text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:border-indigo-700 focus:shadow-outline transition ease-in-out duration-150'
             href='/contact'>Contact</a>

@@ -38,6 +38,7 @@ import {defineComponent} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   layout: 'master',
+  middleware: 'auth',
   setup() {
     const { state, handleSubmit } = useLogin()
     return {

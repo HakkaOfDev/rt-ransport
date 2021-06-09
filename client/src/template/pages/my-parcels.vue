@@ -131,8 +131,7 @@
             <td><span class='icon-truck text-yellow-600'></span></td>
             <td>
               <section>
-                <span class='icon-notification cursor-pointer hover:text-red-500 transition ease-in-out duration-150'
-                      @click="toggle('infos_modal')"></span>
+                <span class='icon-notification cursor-pointer hover:text-red-500 transition ease-in-out duration-150' @click="toggle('infos_modal')"></span>
                 <span class='icon-pencil cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
                 <span class='icon-bin cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
               </section>
@@ -154,6 +153,7 @@
           </tr>
           </tbody>
         </table>
+        <button @click.prevent='actualise' class='bg-red-500 text-white'>Click me</button>
       </div>
     </div>
   </div>
@@ -167,7 +167,9 @@ export default Vue.extend({
   middleware: 'auth',
   data() {
     return {
-      infos_modal: false
+      infos_modal: false,
+      ref: this.$store.state.auth.user.ref,
+      parcels: []
     }
   },
   methods: {
@@ -175,6 +177,10 @@ export default Vue.extend({
       if (modalName === 'infos_modal') {
         this.infos_modal = !this.infos_modal
       }
+    },
+    actualise: async function() {
+      this.parcels = await this.$axios.$get('/entities/parcels/get/users/' + this.ref)
+      console.log(this.parcels)
     }
   }
 })
