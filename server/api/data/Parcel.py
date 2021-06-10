@@ -1,9 +1,6 @@
-from sqlalchemy import Column, Integer, VARCHAR, NUMERIC, BOOLEAN, ForeignKey
+from sqlalchemy import Column, Integer, VARCHAR, NUMERIC, BOOLEAN
 
-from data.workers.Customer import Customer
-from data.workers.Operator import Operator
-from data.workers.Supplier import Supplier
-from handlers.Handler import Base
+from api.handlers.Handler import Base
 
 
 class Parcel(Base):
@@ -22,7 +19,8 @@ class Parcel(Base):
     assured = Column('assured', Integer)
     fragile = Column('fragile', BOOLEAN)
 
-    def __init__(self, ref, operator_ref, customer_ref, supplier_ref, type, height, width, depth, weight, packaging, assured, fragile):
+    def __init__(self, ref, operator_ref, customer_ref, supplier_ref, type, height, width, depth, weight, packaging,
+                 assured, fragile):
         self.ref = ref
         self.operator_ref = operator_ref
         self.customer_ref = customer_ref
@@ -35,3 +33,6 @@ class Parcel(Base):
         self.packaging = packaging
         self.assured = assured
         self.fragile = fragile
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

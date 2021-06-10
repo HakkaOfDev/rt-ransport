@@ -2,10 +2,10 @@ from datetime import date
 
 from sqlalchemy import Column, ForeignKey, Date
 
-from data.Parcel import Parcel
-from data.platforms.PLD import PLD
-from data.workers.Customer import Customer
-from handlers.Handler import Base
+from api import Base
+from api import Customer
+from api import PLD
+from api import Parcel
 
 
 class Pull(Base):

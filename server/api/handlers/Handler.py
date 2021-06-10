@@ -6,11 +6,11 @@ from sqlalchemy.orm import sessionmaker
 
 from tools.Keys import DEBUG
 
-username = (os.getenv("DB_USERNAME"), "postgres")[DEBUG]
-password = (os.getenv("DB_PASSWORD"), "admin")[DEBUG]
-host = (os.getenv("DB_HOST"), "localhost")[DEBUG]
-port = (os.getenv("DB_PORT"), 5432)[DEBUG]
-dbname = (os.getenv("DB_NAME"), "rt-ransport")[DEBUG]
+username = "guser"
+password = "banane1"
+host = "10.59.63.32"
+port = 5432
+dbname = "rtransport"
 address = f'postgresql://{username}:{password}@{host}:{port}/{dbname}'
 
 try:

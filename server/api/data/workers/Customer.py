@@ -1,10 +1,11 @@
+from flask_login import UserMixin
 from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
 
-from data.City import City
-from handlers.Handler import Base
+from api.data.City import City
+from api.handlers.Handler import Base
 
 
-class Customer(Base):
+class Customer(Base, UserMixin):
     __tablename__ = 'customers'
     id = Column('id', Integer, primary_key=True)
     id_city = Column('id_city', Integer, ForeignKey(City.id_city))

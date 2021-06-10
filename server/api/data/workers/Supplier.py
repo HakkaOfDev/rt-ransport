@@ -1,10 +1,11 @@
+from flask_login import UserMixin
 from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
 
-from data.City import City
-from handlers.Handler import Base
+from api.data.City import City
+from api.handlers.Handler import Base
 
 
-class Supplier(Base):
+class Supplier(Base, UserMixin):
     __tablename__ = 'suppliers'
     id = Column('id', Integer, primary_key=True)
     id_city = Column('id_city', Integer, ForeignKey(City.id_city))
@@ -21,3 +22,6 @@ class Supplier(Base):
         self.address = address
         self.login = login
         self.password = password
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

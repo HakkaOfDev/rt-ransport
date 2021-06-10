@@ -2,10 +2,10 @@ from datetime import date
 
 from sqlalchemy import Column, ForeignKey, Date
 
-from data.Parcel import Parcel
-from data.platforms.PLD import PLD
-from data.workers.Supplier import Supplier
-from handlers.Handler import Base
+from api import Base
+from api import PLD
+from api import Parcel
+from api import Supplier
 
 
 class Leave(Base):

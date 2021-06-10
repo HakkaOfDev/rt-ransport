@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, VARCHAR
 
-from handlers.Handler import Base
+from api.handlers.Handler import Base
 
 
 class PLR(Base):

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, VARCHAR, CHAR, Numeric, ForeignKey
 
-from data.platforms.PLD import PLD
-from handlers.Handler import Base
+from api.data.platforms.PLD import PLD
+from api.handlers.Handler import Base
 
 
 class City(Base):

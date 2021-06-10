@@ -2,9 +2,9 @@ from datetime import date
 
 from sqlalchemy import Column, ForeignKey, Date
 
-from data.Parcel import Parcel
-from data.platforms.PLR import PLR
-from handlers.Handler import Base
+from api import Base
+from api import PLR
+from api import Parcel
 
 
 class Transmit(Base):

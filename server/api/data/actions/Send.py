@@ -3,9 +3,9 @@ from sqlite3.dbapi2 import Date
 
 from sqlalchemy import ForeignKey, Column, Boolean
 
-from data.Parcel import Parcel
-from data.platforms.PLD import PLD
-from handlers.Handler import Base
+from api import Base
+from api import PLD
+from api import Parcel
 
 
 class Send(Base):

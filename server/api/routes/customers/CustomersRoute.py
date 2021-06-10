@@ -1,7 +1,7 @@
 from flask import jsonify, Blueprint
 
-from data.workers.Customer import Customer
-from handlers.Handler import Session, engine, Base
+from api.data.workers.Customer import Customer
+from api.handlers.Handler import Session, engine, Base
 from tools.Keys import *
 
 customers_bp = Blueprint('customers_bp', __name__)
