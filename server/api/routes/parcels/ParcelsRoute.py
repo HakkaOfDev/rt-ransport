@@ -1,8 +1,8 @@
-from flask import Blueprint, session, jsonify
+from flask import Blueprint, jsonify
 
-from data.Parcel import Parcel
-from handlers.Handler import Session, engine, Base
-from tools.Keys import *
+from api.data import Parcel
+from api.handlers.Handler import Session, engine, Base
+from tools.Keys import URL_PARCELS
 
 parcels_bp = Blueprint('parcels_bp', __name__)
 Base.metadata.create_all(engine)
@@ -11,12 +11,12 @@ asession = Session()
 
 @parcels_bp.route(URL_PARCELS + 'all', methods=['GET'])
 def getAll():
-    customers = session.query(Parcel).all()
+    parcels = asession.query(Parcel).all()
     response = []
-    if len(customers) != 0:
-        for customer in customers:
-            response.append(customer.as_dict())
-        session.close()
+    if len(parcels) != 0:
+        for parcel in parcels:
+            response.append(parcel.as_dict())
+        asession.close()
         return jsonify(response)
     else:
         return "Parcels not found"
@@ -48,6 +48,7 @@ def getByUser(user_ref):
         return result
     else:
         return "Parcels not found"
+
 
 @parcels_bp.route(URL_PARCELS + 'add', methods=['POST'])
 def addParcel():

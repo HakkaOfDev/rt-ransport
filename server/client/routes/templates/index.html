@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}RT'Ransport | Home{% endblock %}
+{% block content %}
+    <header class='header-container w-full'>
+        <div class='flex flex-col h-full justify-center items-center'>
+            <div class='w-full mx-auto items-center justify-center flex flex-col text-center'>
+                <h1 class='header-text text-3xl lg:text-6xl text-red-500 font-extrabold'>RT<span class='font-semibold'>'ransport</span>
+                </h1>
+                <hr class='w-20 h-1 mb-1 bg-white border-transparent'/>
+                <h2 class='header-text text-xl lg:text-3xl font-bold text-blue-600'>
+                    The packages transport revolution</h2>
+                <div class='flex flex-row justify-between items-center mt-4'>
+                    <label>
+                        <input placeholder="Delivery or order code, etc.."
+                               class='w-64 pl-2.5 sm:text-sm lg:text-lg rounded-full border bg-gray-100 focus:border-gray-900 border-transparent outline-none border- focus:bg-white p-1'
+                               type='search'/>
+                    </label>
+                    <a class='ml-1 text-base leading-6 font-medium text-xl bg-red-500 hover:bg-red-400 text-white rounded-full p-2 transition ease-in-out duration-150 cursor-pointer'
+                       type='submit'>
+                        <span class='icon-search'></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class='w-full h-6 flex justify-center flex-col items-center'>
+        <span class='icon-arrow-down2 animate-bounce text-5xl text-red-500 cursor-pointer'/>
+    </div>
+    <main>
+        <div class='block h-auto py-5 px-20 w-full'>
+            <h2 class='text-4xl text-red-500 font-bold uppercase mb-6 text-center uppercase'>Contact</h2>
+            <div class='flex flex-row justify-center items-center space-x-10 w-full'>
+                <div class='flex flex-col justify-end items-end space-y-2 w-1/2'>
+                    <label class='space-x-2'>
+                        <span>Pseudo</span>
+                        <span class='icon-user'></span>
+                        <input placeholder='John'
+                               class='w-96 pl-2.5 text-lg border bg-gray-100 focus:border-gray-900 border-transparent outline-none border-transparent focus:bg-white p-1'
+                               type='text'/>
+                    </label>
+                    <label class='space-x-2'>
+                        <span>Email</span>
+                        <span class='icon-at'></span>
+                        <input placeholder='john.doe@gmail.com'
+                               class='w-96 pl-2.5 text-lg border bg-gray-100 focus:border-gray-900 border-transparent outline-none border-transparent focus:bg-white p-1'
+                               type='email'/>
+                    </label>
+                    <label class='space-x-2'>
+                        <span>Message</span>
+                        <span class='icon-bubble2'></span>
+                        <textarea placeholder='John'
+                                  class='w-96 pl-2.5 text-lg border bg-gray-100 focus:border-gray-900 border-transparent outline-none border-transparent focus:bg-white p-1'
+                                  rows='3' minlength='3' maxlength='5'></textarea>
+                    </label>
+                    <button class='text-lg justify-center rounded-full bg-red-500 hover:bg-red-400 text-white p-1 px-2.5 border-transparent cursor-pointer'
+                            type='submit'>
+                        Submit
+                    </button>
+                </div>
+                <div class='w-1/2 p-10 flex flex-col justify-center items-center'>
+                    <div class='text-left shadow-lg h-auto p-10 w-10/12 space-y-3'>
+                        <h3 class='text-2xl text-red-500 font-bold uppercase'>Become a supplier</h3>
+                        <hr class='w-1/4 h-1 bg-blue-600'/>
+                        <p class='text-base text-lg'>Join our network and do great things as a supplier !</p>
+                    </div>
+                    <div class='text-left shadow-lg h-auto  p-10 w-10/12 space-y-3'>
+                        <h3 class='text-2xl text-red-500 font-bold uppercase'>Become an operator</h3>
+                        <hr class='w-1/4 h-1 bg-blue-600'/>
+                        <p class='text-base text-lg'>Join our network and do great things as an operator !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

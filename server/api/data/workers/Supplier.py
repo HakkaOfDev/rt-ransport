@@ -23,5 +23,20 @@ class Supplier(Base, UserMixin):
         self.login = login
         self.password = password
 
+    def get_id(self):
+        return self.login
+
+    @staticmethod
+    def is_active():
+        return True
+
     def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        return {
+            "id_city": self.id_city,
+            "ref": self.ref,
+            "name": self.name,
+            "address": self.address,
+            "login": self.login,
+            "password": self.password,
+            "is_active": True,
+        }

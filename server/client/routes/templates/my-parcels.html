@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}RT'Ransport | Deposition{% endblock %}
+{% block content %}
+    <div class='w-full flex items-start justify-between flex-row p-4'>
+        <div class='p-6 rounded-lg shadow-lg overflow-hidden w-full'>
+            <table class='table-auto border-transparent w-full'>
+                <thead>
+                <tr>
+                    <th class='w-2/12'>ID Parcel</th>
+                    <th class='w-4/12'><span class='icon-compass text-base'></span> Current Position</th>
+                    <th class='w-4/12'><span class='icon-home text-base'></span> Destination</th>
+                    <th class='w-1/12'>Status</th>
+                    <th class='w-2/12'>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class='text-center bg-gray-200'>
+                    <td>#12523154efezf</td>
+                    <td>Châlons-en-Champagne</td>
+                    <td>Reims</td>
+                    <td><span class='icon-truck text-yellow-600'></span></td>
+                    <td>
+                        <section>
+                            <span class='icon-notification cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                            <span class='icon-pencil cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                            <span class='icon-bin cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                        </section>
+                    </td>
+                </tr>
+                <tr class='text-center bg-gray-200'>
+                    <td>#12523154efezf</td>
+                    <td>Châlons-en-Champagne</td>
+                    <td>Reims</td>
+                    <td><span class='icon-truck text-yellow-600'></span></td>
+                    <td>
+                        <section>
+                            <span class='icon-notification cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                            <span class='icon-pencil cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                            <span class='icon-bin cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                        </section>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

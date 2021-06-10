@@ -1,6 +1,9 @@
 import os
 
-from api.routes import app
+import requests
+from flask_login import LoginManager
+
+from client.routes import app
 
 if __name__ == "__main__":
     # csrf = CSRFProtect(app)
@@ -12,4 +15,4 @@ if __name__ == "__main__":
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['WTF_CSRF_SECRET_KEY'] = SECRET_KEY
     # csrf.init_app(app)
-    app.run(debug=True, port=8886)
+    app.run(debug=True, port=8887)

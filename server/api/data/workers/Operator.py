@@ -23,5 +23,20 @@ class Operator(Base, UserMixin):
         self.login = login
         self.password = password
 
+    def get_id(self):
+        return self.login
+
+    @staticmethod
+    def is_active():
+        return True
+
     def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        return {
+            "ref": self.ref,
+            "id_pld": self.id_pld,
+            "lastname": self.lastname,
+            "firstname": self.firstname,
+            "login": self.login,
+            "password": self.password,
+            "is_active": True,
+        }
