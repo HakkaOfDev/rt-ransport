@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}RT'Ransport | Deposition{% endblock %}
+{% block content %}
+    <div class='w-full h-screen flex flex-row justify-center items-start space-y-3 text-center'>
+        <div class='text-center'>
+            <h1 class='text-3xl my-3'>Deposition</h1>
+            <form id='deposition' class='flex flex-col justify-center items-center space-y-3' method="post"
+                  action="/parcels/deposition">
+                <div class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-user'></span>
+                    <label>
+                        <input name="customer_ref" placeholder="Customer Ref"
+                               class='w-36 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                </div>
+                <div class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-user'></span>
+                    <label>
+                        <input name="supplier_ref" placeholder="Supplier Ref"
+                               class='w-36 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                </div>
+                <div class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-crop'></span>
+                    <label>
+                        <input name="height" placeholder="H"
+                               class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                    <p>x</p>
+                    <label>
+                        <input name="width" placeholder="L"
+                               class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                    <p>x</p>
+                    <label>
+                        <input name="depth" placeholder="P"
+                               class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                    <p>in} cm</p>
+                </div>
+                <div class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-download3'></span>
+                    <label>
+                        <input name="weight" placeholder="Weight"
+                               class='w-20 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                               type='text'/>
+                    </label>
+                    <p>in kg</p>
+                </div>
+                <label class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-spinner4'></span>
+                    <p>Packaging</p>
+                    <select name="packaging" class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                        <option class='py-1' value='carton'>Carton</option>
+                        <option class='py-1' value='styrofoam'>Styrofoam</option>
+                        <option class='py-1' value='paper'>Paper</option>
+                    </select>
+                </label>
+                <label class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-info'></span>
+                    <p>Type</p>
+                    <select name="type" class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                        <option class='py-1' value='documents'>Documents</option>
+                        <option class='py-1' value='goods'>Goods</option>
+                        <option class='py-1' value='others'>Others</option>
+                    </select>
+                </label>
+                <div class='flex flex-row justify-between items-center space-x-2'>
+                    <label>
+                        <input name="assured" type='checkbox'/> Assured
+                    </label>
+                </div>
+                <label>
+                    <input name="fragile" type='checkbox'/>
+                    Fragile
+                </label>
+                <label class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-earth'></span>
+                    <p>Start Destination</p>
+                    <select name="start_dest" class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                        <option class='py-1' value="Côtes-d'Armor">Côtes-d'Armor</option>
+                        <option class='py-1' value='Morbihan'>Morbihan</option>
+                        <option class='py-1' value='Loire-Atlantique'>Loire-Atlantique</option>
+                        <option class='py-1' value='Vendée'>Vendée</option>
+                    </select>
+                </label>
+                <label class='flex flex-row justify-between items-center space-x-2'>
+                    <span class='icon-earth'></span>
+                    <p>End Destination</p>
+                    <select name="end_dest" class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                        <option class='py-1' value="Côtes-d'Armor">Côtes-d'Armor</option>
+                        <option class='py-1' value='Morbihan'>Morbihan</option>
+                        <option class='py-1' value='Loire-Atlantique'>Loire-Atlantique</option>
+                        <option class='py-1' value='Vendée'>Vendée</option>
+                    </select>
+                </label>
+                <button
+                        class='text-lg rounded-full bg-red-500 hover:bg-red-400 text-white py-1 px-2.5 border-transparent cursor-pointer'
+                        type='submit'>
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
