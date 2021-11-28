@@ -1,0 +1,6 @@
+URL = "/api/v1/"
+URL_CUSTOMERS = URL + "entities/customers/"
+URL_OPERATORS = URL + "entities/operators/"
+URL_SUPPLIERS = URL + "entities/suppliers/"
+URL_PARCELS = URL + "entities/parcels/"
+URL_AUTH = URL + "authentication/"

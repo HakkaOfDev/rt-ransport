@@ -1,0 +1,37 @@
+* {
+    font-family: 'Roboto Thin', sans-serif;
+}
+
+.header-container {
+    height: 70vh;
+    background: url('../img/header.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.header-text {
+    font-family: Roboto, sans-serif;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.flash-messages {
+    top: 3rem;
+    right: 3rem;
+    color: white;
+}
+
+.flash-error {
+    background-color: darkred;
+}
+
+.flash-success {
+    background-color: green;
+}

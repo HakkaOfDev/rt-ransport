@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}RT'Ransport | My parcels{% endblock %}
+{% block content %}
+    <div class='w-full flex items-start justify-between flex-row p-4'>
+        <div class='p-6 rounded-lg shadow-lg overflow-hidden w-full'>
+            <table class='table-auto border-transparent w-full'>
+                <thead>
+                <tr>
+                    <th class='w-2/12'>ID Parcel</th>
+                    <th class='w-4/12'><span class='icon-compass text-base'></span> Current Position</th>
+                    <th class='w-4/12'><span class='icon-home text-base'></span> Destination</th>
+                    <th class='w-2/12'>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if parcels %}
+                    {% for parcel in parcels %}
+                        <tr class='text-center bg-gray-200'>
+                            <td>{{ parcel['ref'] }}</td>
+                            <td>{{ parcel['current'] }}</td>
+                            <td>{{ parcel['end_dest'] }}</td>
+                            <td>
+                                <section>
+                                    {% if session['user']['role'] == 'operator' and parcel['current'] != parcel['end_dest'] %}
+                                        <a href="/parcel/validation/{{ parcel['ref'] }}">
+                                            <span class='icon-compass cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                                        </a>
+                                    {% endif %}
+                                    <a href="/parcel/{{ parcel['ref'] }}">
+                                        <span class='icon-notification cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                                    </a>
+                                    <a href="/parcel/delete/{{ parcel['ref'] }}">
+                                        <span class='icon-bin cursor-pointer hover:text-red-500 transition ease-in-out duration-150'></span>
+                                    </a>
+                                </section>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

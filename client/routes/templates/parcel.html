@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}RT'Ransport | {{ parcel['ref'] }}{% endblock %}
+{% block content %}
+    <div class="flex justify-center items-center w-full h-auto">
+
+        <div class='block relative w-2/3 h-auto overflow-y-auto bg-white shadow-lg rounded-lg px-8 py-4'>
+            <div class='flex flex-col justify-center items-center space-y-5'>
+                <h2 class='text-2xl text-black font-extrabold'>Information</h2>
+                <div class='flex flex-row justify-center items-center space-x-2 w-full'>
+                    <div class='flex flex-col justify-center space-y-2 w-1/2'>
+                        <h2 class='text-xl text-black font-extrabold text-center'>Divers</h2>
+                        <div class='flex flex-row justify-center space-x-2'>
+                            <span class='icon-crop'></span>
+                            <label>
+                                <input placeholder='{{ parcel['height'] }}'
+                                       class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                                       type='text' disabled/>
+                            </label>
+                            <p>x</p>
+                            <label>
+                                <input placeholder='{{ parcel['width'] }}'
+                                       class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                                       type='text' disabled/>
+                            </label>
+                            <p>x</p>
+                            <label>
+                                <input placeholder='{{ parcel['depth'] }}'
+                                       class='w-16 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                                       type='text' disabled/>
+                            </label>
+                            <p>in cm</p>
+                        </div>
+                        <div class='flex flex-row justify-center items-center space-x-2'>
+                            <span class='icon-download3'></span>
+                            <label>
+                                <input placeholder="{{ parcel['weight'] }}"
+                                       class='w-20 text-lg border bg-gray-100 rounded-full focus:border-gray-900 border-transparent outline-none border- focus:bg-white py-0.25 px-1.5'
+                                       type='text' disabled/>
+                            </label>
+                            <p>in kg</p>
+                        </div>
+                        <label class='flex flex-row justify-center items-center space-x-2'>
+                            <span class='icon-spinner4'></span>
+                            <p>Packaging</p>
+                            <select class='w-32 border bg-white rounded px-3 py-2 outline-none'>
+                                <option class='py-1' selected disabled>{{ parcel['packaging'] }}</option>
+                            </select>
+                        </label>
+                        <div class='flex flex-row justify-center items-center space-x-2'>
+                            <label>
+                                Type
+                            </label>
+                            <div class=''>
+                                <label>
+                                    <select class='w-full border bg-white rounded px-3 py-2 outline-none w-full'>
+                                        <option class='py-1' selected disabled>{{ parcel['type'] }}</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <label class='flex flex-row justify-center items-center'>
+                            {{ ('Not Assured', 'Assured')[parcel['assured']] }}
+                        </label>
+                        <label class='flex flex-row justify-center items-center'>
+                            {{ ('Not Fragile', 'Fragile')[parcel['fragile']] }}
+                        </label>
+                    </div>
+                    <div class='flex flex-col justify-end space-y-2 w-1/2 text-center pr-12'>
+                        <h2 class='text-xl text-black font-extrabold'>Tracking</h2>
+                        {% if tracking %}
+                            {% for track in tracking %}
+                                {% if track['dest_plr'] %}
+                                    {% if track['reception_date'] == None %}
+                                        <div class='flex flex-row justify-end items-center'>
+                                            <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                <p class="text-lg">Waiting recovery...</p>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class='flex flex-row justify-end items-center'>
+                                            <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                <p class='text-lg text-right'>Reception from PLR {{ track['plr'] }}</p>
+                                                <p class="text-sm">{{ track['reception_date'] }}</p>
+                                                <span class='text-sm uppercase'>{{ track['pos'] }}</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class='flex flex-row justify-end items-center'>
+                                        <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                            <p class='text-lg text-right'>Send to PLR {{ track['dest_plr'] }}</p>
+                                            <p class="text-sm">{{ track['send_date'] }}</p>
+                                            <span class='text-sm uppercase'>PLR: {{ track['plr'] }}</span>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    {% if track['reception_date'] == None %}
+                                        <div class='flex flex-row justify-end items-center'>
+                                            <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pl-6'>
+                                                <p class="text-lg">Waiting recovery...</p>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        {% if track['pld_to_plr'] %}
+                                            <div class='flex flex-row justify-end items-center'>
+                                                <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                    <p class='text-lg text-right'>Reception from PLR {{ track['plr'] }}</p>
+                                                    <p class="text-sm">{{ track['reception_date'] }}</p>
+                                                    <span class='text-sm uppercase'>PLR: {{ track['plr'] }}</span>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class='flex flex-row justify-end items-center'>
+                                                <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                    <p class='text-lg text-right'>Reception from PLD
+                                                        - {{ track['pos'] }}</p>
+                                                    <p class="text-sm">{{ track['reception_date'] }}</p>
+                                                    <span class='text-sm uppercase'>PLR: {{ track['plr'] }}</span>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if track['pld_to_plr'] %}
+                                        <div class='flex flex-row justify-end items-center'>
+                                            <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                <p class='text-lg text-right'>Send to PLR {{ track['plr'] }}</p>
+                                                <p class="text-sm">{{ track['send_date'] }}</p>
+                                                <span class='text-sm uppercase'>PLR: {{ track['plr'] }}</span>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class='flex flex-row justify-end items-center'>
+                                            <div class='flex flex-col justify-start border-r-2 border-red-500 text-right pr-6'>
+                                                <p class='text-lg text-right'>Send to PLD - {{ track['pos'] }}</p>
+                                                <p class="text-sm">{{ track['send_date'] }}</p>
+                                                <span class='text-sm uppercase'>PLR: {{ track['plr'] }}</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
